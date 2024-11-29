@@ -8,7 +8,7 @@ import { msalConfig } from "./auth-config";
 
 let msalInstance;
 
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && window.crypto?.subtle) {
   msalInstance = new PublicClientApplication(msalConfig);
 
   if (
@@ -24,6 +24,8 @@ if (typeof window !== "undefined") {
       msalInstance.setActiveAccount(account);
     }
   });
+} else {
+  console.error("Web Crypto API is not available. MSAL cannot function.");
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
