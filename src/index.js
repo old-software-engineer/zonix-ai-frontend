@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -5,6 +6,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { EventType, PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./auth-config";
+=======
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import "./style/flexboxgrid.min.css";
+import './style/index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { EventType, PublicClientApplication } from '@azure/msal-browser';
+import { msalConfig } from './auth-config';
+>>>>>>> Stashed changes
 
 let msalInstance;
 

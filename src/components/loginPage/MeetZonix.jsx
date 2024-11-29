@@ -8,7 +8,7 @@ const MeetZonix = () => {
   };
   const meetZonix = [
     {
-      question: "Create with Zonix AI",
+      question: "Create with ZONIX AI",
       answer:
         "Draft and iterate on websites, graphics, documents, and code alongside your chat with Artifacts.",
     },
@@ -29,9 +29,9 @@ const MeetZonix = () => {
       <div className="bg-cream min-h-screen flex flex-col items-center justify-center font-sans text-gray-800">
         {/* Header */}
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Meet Zonix AI</h1>
+          <h1 className="text-4xl font-bold mb-4">Meet ZONIX AI</h1>
           <p className="text-lg">
-            Zonix AI is a next-generation AI assistant built by Anthropic and
+            ZONIX AI is a next-generation AI assistant built by Anthropic and
             trained to be safe, accurate, and secure to help you do your best
             work.
           </p>

@@ -11,19 +11,19 @@ const RightSideCarousel = () => {
       text1:
         "By 2025, the global dataset volume is estimated to be 180 zettabytes (one followed by 21 zeroes!).",
       text2:
-        "Zonix AI will help you surf through this vast sea of datasets with ease.",
+        "ZONIX AI will help you surf through this vast sea of datasets with ease.",
     },
     {
       src: "/images/signup.svg",
       text1:
         "Many datasets escape the sight of existing search engines due to non-standard publishing practices.",
-      text2: "Fear not, Zonix AI uncovers those datasets with wit and wisdom!",
+      text2: "Fear not, ZONIX AI uncovers those datasets with wit and wisdom!",
     },
     {
       src: "/images/signup2.svg",
       text1:
         "Knowledge workers spend up to 25% of their time searching for data, costing millions for organisations.",
-      text2: "Zonix AI saves both time and money.",
+      text2: "ZONIX AI saves both time and money.",
     },
   ];
 

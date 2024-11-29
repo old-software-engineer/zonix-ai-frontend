@@ -43,4 +43,5 @@ export const msalConfig = {
 
 export const loginRequest = {
     scopes: ['user.read','Team.ReadBasic.All','TeamMember.Read.All'],
+    prompt: 'select_account'
 }

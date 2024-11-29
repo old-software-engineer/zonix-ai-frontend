@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-500 p-4 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text-white text-xl font-bold">Zonix AI</div>
+        <div className="text-white text-xl font-bold">ZONIX AI</div>
         <button
           className="text-white lg:hidden block"
           onClick={toggleMenu}

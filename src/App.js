@@ -5,7 +5,7 @@ import { loginRequest } from "./auth-config";
 import LandingPage from "./page/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./page/HomePage";
-
+import Home from './screens/Home'
 const App = ({ instance }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const handleLogin = () => {
@@ -29,7 +29,11 @@ const App = ({ instance }) => {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage onLogin={handleLogin} />} />
+<<<<<<< Updated upstream
           {/* <Route path="/home" element={isAuthenticated ? <HomePage /> : <LandingPage onLogin={handleLogin} />} /> */}
+=======
+          <Route path="/home" element={<Home/>} />
+>>>>>>> Stashed changes
         </Routes>
       </Router>
     </MsalProvider>

@@ -1,12 +1,56 @@
 import React from "react";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RightSideCarousel from "./RightSideCarousel";
-import MeetZonix from "../components/homepage/MeetZonix";
-import PlanSection from "../components/homepage/PlanSection";
+import MeetZonix from "../components/loginPage/MeetZonix";
+import PlanSection from "../components/loginPage/PlanSection";
 import Footer from "../components/Footer";
-import Faq from "../components/homepage/Faq";
+import Faq from "../components/loginPage/Faq";
 import Navbar from "../components/NavBar";
+import { useMsal } from "@azure/msal-react";
 
 const LandingPage = ({ onLogin }) => {
+
+  const [accessToken, setAccessToken] = useState('');
+  const [data, setData] = useState(null);
+  const navigate = useNavigate();
+  const { instance, accounts } = useMsal();
+
+  const accessTokenRequest = {
+    scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"], // Add your required scopes here
+    account: accounts[0],
+  };
+
+  useEffect(() => {
+    let token = localStorage.getItem('token');
+    if (token) {
+      navigate("/home"); // Redirect to HomePage when token is available
+    }
+    console.log("Access Token : ",accessToken);
+  }, [accessToken, navigate]);
+
+  useEffect(() => {
+    instance
+      .acquireTokenSilent(accessTokenRequest)
+      .then((response) => {
+        setAccessToken(response.accessToken) // Store the access token in state
+        localStorage.setItem('token',response.accessToken);
+        fetch("https://graph.microsoft.com/v1.0/me", {
+          headers: {
+            Authorization: `Bearer ${response.accessToken}`, // Use the token for API calls
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => setData(data))
+          .catch((err) => console.error(err));
+      })
+      .catch((error) => {
+        console.error("Token acquisition failed:", error);
+      });
+  }, [instance, accounts]);
+
+
+   
   return (
     <>
       {/* <Navbar /> */}
@@ -18,7 +62,7 @@ const LandingPage = ({ onLogin }) => {
             </div>
             <div className="text-center flex flex-col gap-y-8">
               <div>
-                <h1 className="text-4xl font-bold">Zonix Ai</h1>
+                <h1 className="text-4xl font-bold">ZONIX AI</h1>
                 <p className="mt-4 text-gray-600">
                   ZONIX, your AI-agent to realize goals with ease!
                 </p>
