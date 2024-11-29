@@ -29,7 +29,7 @@ if (typeof window !== "undefined" && window.crypto?.subtle) {
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App instance={msalInstance} />);
+root.render(msalInstance ? <App instance={msalInstance} /> : <div>Web Crypto API is not available.</div>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
