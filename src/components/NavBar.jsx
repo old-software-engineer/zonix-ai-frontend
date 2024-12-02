@@ -1,11 +1,28 @@
 import React, { useState } from "react";
+import { useMsal } from "@azure/msal-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { instance } = useMsal();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+
+    const handleLogout = () => {
+        const activeAccount = instance.getActiveAccount();
+        localStorage.removeItem("token");
+        console.log(
+          "=========================== Active account : ",
+          instance.getActiveAccount()
+        );
+        instance.logoutRedirect({
+          account: activeAccount,
+          postLogoutRedirectUri: "/",
+        });
+        // navigate('/')
+      };
 
   return (
     <nav className="bg-blue-500 p-4 shadow-md">
@@ -24,6 +41,7 @@ const Navbar = () => {
           <li><a href="#about" className="text-white hover:text-gray-200">About</a></li>
           <li><a href="#services" className="text-white hover:text-gray-200">Services</a></li>
           <li><a href="#contact" className="text-white hover:text-gray-200">Contact</a></li>
+          <li><a href="#logout" className="text-white hover:text-gray-200" onClick={handleLogout}>Logout</a></li>
         </ul>
       </div>
     </nav>

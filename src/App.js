@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import { MsalProvider } from "@azure/msal-react";
 import "./global.css";
-import { loginRequest } from "./auth-config";
 import LandingPage from "./page/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./page/HomePage";
-import Home from './screens/Home'
-const App = ({ instance }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+import CreateTeam from "./components/Teams/CreateTeam";
+import TeamOverview from "./components/Teams/TeamOverview";
+
+const App = ({ msalInstance }) => {
+  // State to track token presence
+  const [tokenPresent, setTokenPresent] = useState(
+    Boolean(localStorage.getItem("token"))
+  );
+
   const handleLogin = () => {
-    instance
+    console.log("Handle login called......");
+    msalInstance
       .loginPopup({
-        ...loginRequest,
-        prompt: "create",
+        scopes: ["user.read", "Team.ReadBasic.All", "TeamMember.Read.All"],
+        prompt: "login", // Force the user to re-enter credentials
       })
       .then((response) => {
         console.log("Login success", response);
-        setIsAuthenticated(true); // Update state after successful login
+        const token = response.accessToken; // Get the token from the response
+        localStorage.setItem("token", token); // Save token to localStorage
+        setTokenPresent(true); // Update state to indicate the token is present
       })
       .catch((error) => {
         console.error("Login error", error);
@@ -24,16 +33,46 @@ const App = ({ instance }) => {
       });
   };
 
+  // Effect to monitor token presence in localStorage
+  // useEffect(() => {
+  //   const storedToken = Boolean(localStorage.getItem("token"));
+  //   setTokenPresent(storedToken);
+  // }, []); // Runs once on mount to sync state with localStorage
+
   return (
-    <MsalProvider instance={instance}>
+    <MsalProvider instance={msalInstance}>
       <Router>
         <Routes>
-          <Route path="/" element={<LandingPage onLogin={handleLogin} />} />
-<<<<<<< Updated upstream
-          {/* <Route path="/home" element={isAuthenticated ? <HomePage /> : <LandingPage onLogin={handleLogin} />} /> */}
-=======
-          <Route path="/home" element={<Home/>} />
->>>>>>> Stashed changes
+          <Route
+            path="/"
+            element={
+              <LandingPage instance={msalInstance} handleLogin={handleLogin} />
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute tokenPresent={tokenPresent}>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/project/new"
+            element={
+              <ProtectedRoute tokenPresent={tokenPresent}>
+                <CreateTeam />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/project/:id"
+            element={
+              <ProtectedRoute tokenPresent={tokenPresent}>
+                <TeamOverview />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </MsalProvider>

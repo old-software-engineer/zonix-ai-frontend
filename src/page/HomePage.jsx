@@ -1,32 +1,39 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { useMsal } from "@azure/msal-react";
 import Navbar from "../components/NavBar";
+import Teams from "../components/Teams/Teams";
+import CreateTeam from "../components/Teams/CreateTeams";
+import ManagementCarousel from "../components/Teams/ManagementCarousel";
 
 const HomePage = () => {
 
-  const navigate = useNavigate()
 
-  const { instance } = useMsal();
+  // const handleLogout = () => {
+  //   const activeAccount = instance.getActiveAccount();
+  //   localStorage.removeItem("token");
+  //   console.log(
+  //     "=========================== Active account : ",
+  //     instance.getActiveAccount()
+  //   );
+  //   instance.logoutRedirect({
+  //     account: activeAccount,
+  //     postLogoutRedirectUri: "/",
+  //   });
+  //   // navigate('/')
+  // };
 
-  const handleLogout = () => {
-      instance.logoutRedirect({
-        account: instance.getActiveAccount(),
-        postLogoutRedirectUri: "/"
-      });
-      navigate('/')
-    };
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <button className="bg-blue-500 text-white px-4 py-4">
-        Manage Project
-      </button>
-      <button className="bg-blue-500 text-white px-4 py-4" onClick={handleLogout}>
-        Logout
-      </button>
-        <Footer />
+      <main className="flex-grow">
+        <Teams />
+        <CreateTeam />
+        <div className="mt-10 bg-gray-100">
+        <h1 className="text-xl text-center font-bold mt-10 pt-10">Importance of Project Management</h1>
+        <ManagementCarousel/>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };

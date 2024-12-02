@@ -6,15 +6,15 @@ import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
 import Footer from "../components/Footer";
 import Faq from "../components/loginPage/Faq";
-import Navbar from "../components/NavBar";
 import { useMsal } from "@azure/msal-react";
 
-const LandingPage = ({ onLogin }) => {
+const LandingPage = ({ instance,handleLogin }) => {
 
   const [accessToken, setAccessToken] = useState('');
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const { instance, accounts } = useMsal();
+  const {accounts } = useMsal();
+
 
   const accessTokenRequest = {
     scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"], // Add your required scopes here
@@ -33,6 +33,8 @@ const LandingPage = ({ onLogin }) => {
     instance
       .acquireTokenSilent(accessTokenRequest)
       .then((response) => {
+        console.log("accounts : ",accounts)
+        instance.setActiveAccount(response.account); 
         setAccessToken(response.accessToken) // Store the access token in state
         localStorage.setItem('token',response.accessToken);
         fetch("https://graph.microsoft.com/v1.0/me", {
@@ -69,7 +71,7 @@ const LandingPage = ({ onLogin }) => {
               </div>
               <div className="p-5 border border-gray-400 rounded-lg shadow-xl">
                 <button
-                  onClick={onLogin}
+                  onClick={handleLogin}
                   className="bg-blue-500 text-white px-10 py-3 my-3 rounded-lg hover:bg-blue-600"
                 >
                   Continue with Microsoft
