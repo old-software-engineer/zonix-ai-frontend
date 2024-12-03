@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Callback = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     const fetchToken = async () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -17,18 +14,16 @@ const Callback = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch access token");
         }
-
         const data = await response.json();
         localStorage.setItem("access_token", data.access_token);
-
-        navigate("/home");
+        window.location.href = "/";
       } catch (error) {
         console.error("Error fetching token:", error);
       }
     };
 
     fetchToken();
-  }, [navigate]);
+  }, []);
 
   return <div>Loading...</div>;
 };

@@ -9,53 +9,30 @@ import CreateTeam from "./components/Teams/CreateTeam";
 import TeamOverview from "./components/Teams/TeamOverview";
 import Callback from "./components/Callbacks";
 
-const App = ({ msalInstance }) => {
+const App = () => {
   // State to track token presence
   const [tokenPresent, setTokenPresent] = useState(
-    Boolean(localStorage.getItem("token"))
+    Boolean(localStorage.getItem("access_token"))
   );
-
-  const handleLogin = () => {
-<<<<<<< Updated upstream
-    window.location.href = "http://localhost:8000/auth/login";
-=======
-    console.log("Handle login called......");
-    msalInstance
-      .loginPopup({
-        scopes: ["user.Read", "Team.ReadBasic.All", "TeamMember.Read.All","Group.ReadWrite.All"],
-        prompt: "select_account", // Force the user to re-enter credentials
-      })
-      .then((response) => {
-        console.log("Login success", response);
-        const token = response.accessToken; // Get the token from the response
-        localStorage.setItem("token", token); // Save token to localStorage
-        setTokenPresent(true); // Update state to indicate the token is present
-      })
-      .catch((error) => {
-        console.error("Login error", error);
-        alert("Login failed. Please try again.");
-      });
->>>>>>> Stashed changes
-  };
 
   // Effect to monitor token presence in localStorage
   // useEffect(() => {
-  //   const storedToken = Boolean(localStorage.getItem("token"));
+  //   const storedToken = Boolean(localStorage.getItem("access_token"));
   //   setTokenPresent(storedToken);
   // }, []); // Runs once on mount to sync state with localStorage
 
   return (
-    <MsalProvider instance={msalInstance}>
+    // <MsalProvider instance={msalInstance}>
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/login"
             element={
               <LandingPage/>
             }
           />
           <Route
-            path="/home"
+            path="/"
             element={
               <ProtectedRoute tokenPresent={tokenPresent}>
                 <HomePage />
@@ -81,7 +58,7 @@ const App = ({ msalInstance }) => {
           <Route path="/auth/callback" element={<Callback />} />
         </Routes>
       </Router>
-    </MsalProvider>
+    // </MsalProvider>
   );
 };
 

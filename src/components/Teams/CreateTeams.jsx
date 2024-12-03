@@ -19,9 +19,6 @@ function CreateTeam() {
             <p className=" text-center p-2 text-lg">Did you Know?</p>
             <p className=" text-center p-2 text-lg">Goals have a 90% higher success rate if you follow up the progress on a weekly base.   </p>
         </div>
-        {/* <div className="w-full">
-          <RightSideCarousel />
-        </div> */}
     </div>
   )
 }

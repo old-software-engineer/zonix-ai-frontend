@@ -13,7 +13,9 @@ const HomePage = () => {
       const accessToken = localStorage.getItem("access_token");
 
       try {
-        const response = await fetch(`http://localhost:8000/graph/me?access_token=${accessToken}`);
+        const response = await fetch(
+          `http://localhost:8000/graph/me?access_token=${accessToken}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch profile data");
         }
@@ -32,6 +34,11 @@ const HomePage = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
+        <div className="mt-10">
+          <h1 className="container mx-auto text-lg font-bold">
+            Hello, {profile?.userPrincipalName}
+          </h1>
+        </div>
         <Teams />
         <CreateTeam />
         <div className="mt-10 bg-gray-100">

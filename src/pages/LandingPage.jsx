@@ -1,37 +1,29 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import RightSideCarousel from "./RightSideCarousel";
 import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
 import Footer from "../components/Footer";
 import Faq from "../components/loginPage/Faq";
 import LoginButton from "../components/LoginButton";
-import Navbar from "../components/NavBar";
-import { useMsal } from "@azure/msal-react";
 
 const LandingPage = () => {
-  const [accessToken, setAccessToken] = useState("");
-  const [data, setData] = useState(null);
-  const navigate = useNavigate();
-  const { instance, accounts } = useMsal();
+  // const [accessToken, setAccessToken] = useState("");
+  // const [data, setData] = useState(null);
+  // const navigate = useNavigate();
+  // const { instance, accounts } = useMsal();
 
-  const accessTokenRequest = {
-<<<<<<< Updated upstream:src/pages/LandingPage.jsx
-    scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"],
-=======
-    scopes: ["User.Read","Team.ReadBasic.All","TeamMember.Read.All"], // Add your required scopes here
->>>>>>> Stashed changes:src/page/LandingPage.jsx
-    account: accounts[0],
-  };
+  // const accessTokenRequest = {
+  //   scopes: ["User.Read","Team.ReadBasic.All","TeamMember.Read.All"], // Add your required scopes here
+  //   account: accounts[0],
+  // };
 
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      navigate("/home");
-    }
-    console.log("Access Token : ", accessToken);
-  }, [accessToken, navigate]);
+  // useEffect(() => {
+  //   let token = localStorage.getItem("access_token");
+  //   if (token) {
+  //     navigate("/");
+  //   }
+  //   console.log("Access Token : ", accessToken);
+  // }, [accessToken, navigate]);
 
   return (
     <>

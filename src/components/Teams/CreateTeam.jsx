@@ -29,7 +29,7 @@
       };
 
       try {
-        const accessToken = localStorage.getItem("token");
+        const accessToken = localStorage.getItem("access_token");
         console.log("========================access token" ,accessToken)
         // Replace with your Microsoft Graph API access token
         const response = await fetch(url, {
