@@ -16,7 +16,26 @@ const App = ({ msalInstance }) => {
   );
 
   const handleLogin = () => {
+<<<<<<< Updated upstream
     window.location.href = "http://localhost:8000/auth/login";
+=======
+    console.log("Handle login called......");
+    msalInstance
+      .loginPopup({
+        scopes: ["user.Read", "Team.ReadBasic.All", "TeamMember.Read.All","Group.ReadWrite.All"],
+        prompt: "select_account", // Force the user to re-enter credentials
+      })
+      .then((response) => {
+        console.log("Login success", response);
+        const token = response.accessToken; // Get the token from the response
+        localStorage.setItem("token", token); // Save token to localStorage
+        setTokenPresent(true); // Update state to indicate the token is present
+      })
+      .catch((error) => {
+        console.error("Login error", error);
+        alert("Login failed. Please try again.");
+      });
+>>>>>>> Stashed changes
   };
 
   // Effect to monitor token presence in localStorage

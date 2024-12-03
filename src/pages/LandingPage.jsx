@@ -17,7 +17,11 @@ const LandingPage = () => {
   const { instance, accounts } = useMsal();
 
   const accessTokenRequest = {
+<<<<<<< Updated upstream:src/pages/LandingPage.jsx
     scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"],
+=======
+    scopes: ["User.Read","Team.ReadBasic.All","TeamMember.Read.All"], // Add your required scopes here
+>>>>>>> Stashed changes:src/page/LandingPage.jsx
     account: accounts[0],
   };
 
