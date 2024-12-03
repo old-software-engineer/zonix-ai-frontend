@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { MsalProvider } from "@azure/msal-react";
 import "./global.css";
-import LandingPage from "./page/LandingPage";
+import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
-import HomePage from "./page/HomePage";
+import HomePage from "./pages/HomePage";
 import CreateTeam from "./components/Teams/CreateTeam";
 import TeamOverview from "./components/Teams/TeamOverview";
+import Callback from "./components/Callbacks";
 
 const App = ({ msalInstance }) => {
   // State to track token presence
@@ -15,22 +16,7 @@ const App = ({ msalInstance }) => {
   );
 
   const handleLogin = () => {
-    console.log("Handle login called......");
-    msalInstance
-      .loginPopup({
-        scopes: ["user.read", "Team.ReadBasic.All", "TeamMember.Read.All"],
-        prompt: "login", // Force the user to re-enter credentials
-      })
-      .then((response) => {
-        console.log("Login success", response);
-        const token = response.accessToken; // Get the token from the response
-        localStorage.setItem("token", token); // Save token to localStorage
-        setTokenPresent(true); // Update state to indicate the token is present
-      })
-      .catch((error) => {
-        console.error("Login error", error);
-        alert("Login failed. Please try again.");
-      });
+    window.location.href = "http://localhost:8000/auth/login";
   };
 
   // Effect to monitor token presence in localStorage
@@ -46,7 +32,7 @@ const App = ({ msalInstance }) => {
           <Route
             path="/"
             element={
-              <LandingPage instance={msalInstance} handleLogin={handleLogin} />
+              <LandingPage/>
             }
           />
           <Route
@@ -73,6 +59,7 @@ const App = ({ msalInstance }) => {
               </ProtectedRoute>
             }
           />
+          <Route path="/auth/callback" element={<Callback />} />
         </Routes>
       </Router>
     </MsalProvider>

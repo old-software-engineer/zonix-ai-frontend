@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { PublicClientApplication } from '@azure/msal-browser';
-// import { msalConfig } from './auth-config';
+import { EventType, PublicClientApplication } from '@azure/msal-browser';
 
 const pca = new PublicClientApplication({
   auth: {

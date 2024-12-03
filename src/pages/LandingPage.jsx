@@ -1,58 +1,34 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RightSideCarousel from "./RightSideCarousel";
 import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
 import Footer from "../components/Footer";
 import Faq from "../components/loginPage/Faq";
+import LoginButton from "../components/LoginButton";
+import Navbar from "../components/NavBar";
 import { useMsal } from "@azure/msal-react";
 
-const LandingPage = ({ instance,handleLogin }) => {
-
-  const [accessToken, setAccessToken] = useState('');
+const LandingPage = () => {
+  const [accessToken, setAccessToken] = useState("");
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const {accounts } = useMsal();
-
+  const { instance, accounts } = useMsal();
 
   const accessTokenRequest = {
-    scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"], // Add your required scopes here
+    scopes: ["Team.ReadBasic.All", "TeamMember.Read.All"],
     account: accounts[0],
   };
 
   useEffect(() => {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem("token");
     if (token) {
-      navigate("/home"); // Redirect to HomePage when token is available
+      navigate("/home");
     }
-    console.log("Access Token : ",accessToken);
+    console.log("Access Token : ", accessToken);
   }, [accessToken, navigate]);
 
-  useEffect(() => {
-    instance
-      .acquireTokenSilent(accessTokenRequest)
-      .then((response) => {
-        console.log("accounts : ",accounts)
-        instance.setActiveAccount(response.account); 
-        setAccessToken(response.accessToken) // Store the access token in state
-        localStorage.setItem('token',response.accessToken);
-        fetch("https://graph.microsoft.com/v1.0/me", {
-          headers: {
-            Authorization: `Bearer ${response.accessToken}`, // Use the token for API calls
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => setData(data))
-          .catch((err) => console.error(err));
-      })
-      .catch((error) => {
-        console.error("Token acquisition failed:", error);
-      });
-  }, [instance, accounts]);
-
-
-   
   return (
     <>
       {/* <Navbar /> */}
@@ -71,10 +47,9 @@ const LandingPage = ({ instance,handleLogin }) => {
               </div>
               <div className="p-5 border border-gray-400 rounded-lg shadow-xl">
                 <button
-                  onClick={handleLogin}
                   className="bg-blue-500 text-white px-10 py-3 my-3 rounded-lg hover:bg-blue-600"
                 >
-                  Continue with Microsoft
+                  <LoginButton />
                 </button>
                 <div className="text-[12px] w-96">
                   By continuing, you agree to Anthropic’s Consumer Terms and
