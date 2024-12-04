@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import Teams from "../components/Teams/Teams";
-import CreateTeam from "../components/Teams/CreateTeams";
-import ManagementCarousel from "../components/Teams/ManagementCarousel";
+import CreateTeam from "../components/Teams/TeamsSection";
+import ManagementCarousel from "../components/Teams/ManagementCarousel"; 
 
 const HomePage = () => {
   const [profile, setProfile] = useState(null);
@@ -32,7 +32,7 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Navbar/>
       <main className="flex-grow">
         <div className="mt-10">
           <h1 className="container mx-auto text-lg font-bold">

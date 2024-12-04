@@ -7,13 +7,13 @@ import HomePage from "./pages/HomePage";
 import CreateTeam from "./components/Teams/CreateTeam";
 import TeamOverview from "./components/Teams/TeamOverview";
 import Callback from "./components/Callbacks";
+import Home from "./screens/Home";
 
 const App = () => {
   // State to track token presence
   const [tokenPresent, setTokenPresent] = useState(
     Boolean(localStorage.getItem("access_token"))
   );
-
 
   return (
       <Router>
@@ -28,7 +28,7 @@ const App = () => {
             path="/"
             element={
               <ProtectedRoute tokenPresent={tokenPresent}>
-                <HomePage />
+                <Home />
               </ProtectedRoute>
             }
           />

@@ -61,7 +61,7 @@ const MeetZonix = () => {
                     page load time and user session duration:
                   </p>
                   {/* Scatter Plot Placeholder */}
-                  <div className="bg-blue-500 text-white rounded-lg mt-3 p-4">
+                  <div className="bg-primary text-white rounded-lg mt-3 p-4">
                     <p className="text-sm text-center">Scatter Plot</p>
                     <p className="text-xs text-center">(Placeholder)</p>
                   </div>

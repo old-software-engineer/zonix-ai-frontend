@@ -9,13 +9,15 @@ function ManagementCarousel() {
       title: "Make the Most of Your Resources",
       description1:
         "Project management helps you allocate time, budget, and resources efficiently. ",
-        description2: "By tracking progress and addressing risks early, you can avoid wastage and ensure optimal use of the available resources."
+      description2:
+        "By tracking progress and addressing risks early, you can avoid wastage and ensure optimal use of the available resources.",
     },
     {
       title: "Set Clear Goals and Direction",
       description1:
         "Effective project management ensures that every team member understands the objectives and their roles. ",
-        description2:"With a structured plan, your project stays on track, and everyone works towards a shared vision, reducing confusion and increasing productivity."
+      description2:
+        "With a structured plan, your project stays on track, and everyone works towards a shared vision, reducing confusion and increasing productivity.",
     },
   ];
 
@@ -31,8 +33,7 @@ function ManagementCarousel() {
     pauseOnHover: false,
   };
   return (
-    <div className="bg-gray-100 mt-10">
-    
+    <div className=" my-20">
       <Slider {...settings} className="">
         {objects.map((item, index) => (
           <div key={index}>
@@ -46,6 +47,15 @@ function ManagementCarousel() {
               <p className="font-semibold text-dtech-new-main mt-2 lg:text-lg md:text-base text-center text-wrap">
                 {item.description2}
               </p>
+              <div className="flex items-center justify-center m-4">
+                <img
+                  src="/images/carousel.png"
+                  alt="img"
+                  className="rounded-lg"
+                  width={350}
+                  height={350}
+                />
+              </div>
             </div>
           </div>
         ))}

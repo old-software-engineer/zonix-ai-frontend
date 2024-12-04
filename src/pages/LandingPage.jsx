@@ -2,7 +2,7 @@ import React from "react";
 import RightSideCarousel from "./RightSideCarousel";
 import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
-import Footer from "../components/Footer";
+import Footer from '../components/Sections/Footer'
 import Faq from "../components/loginPage/Faq";
 import LoginButton from "../components/LoginButton";
 
@@ -25,7 +25,7 @@ const LandingPage = () => {
               </div>
               <div className="p-5 border border-gray-400 rounded-lg shadow-xl">
                 <button
-                  className="bg-blue-500 text-white my-3 rounded-lg hover:bg-blue-600"
+                  className="bg-primary text-white my-3 rounded-lg hover:bg-blue-600"
                 >
                   <LoginButton />
                 </button>
