@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MsalProvider } from "@azure/msal-react";
 import "./global.css";
 import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,14 +14,8 @@ const App = () => {
     Boolean(localStorage.getItem("access_token"))
   );
 
-  // Effect to monitor token presence in localStorage
-  // useEffect(() => {
-  //   const storedToken = Boolean(localStorage.getItem("access_token"));
-  //   setTokenPresent(storedToken);
-  // }, []); // Runs once on mount to sync state with localStorage
 
   return (
-    // <MsalProvider instance={msalInstance}>
       <Router>
         <Routes>
           <Route
@@ -58,7 +51,6 @@ const App = () => {
           <Route path="/auth/callback" element={<Callback />} />
         </Routes>
       </Router>
-    // </MsalProvider>
   );
 };
 

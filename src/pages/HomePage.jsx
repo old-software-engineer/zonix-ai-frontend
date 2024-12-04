@@ -14,7 +14,7 @@ const HomePage = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:8000/graph/me?access_token=${accessToken}`
+          `${process.env.REACT_APP_API_URL}/graph/me?access_token=${accessToken}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch profile data");

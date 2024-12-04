@@ -7,24 +7,6 @@ import Faq from "../components/loginPage/Faq";
 import LoginButton from "../components/LoginButton";
 
 const LandingPage = () => {
-  // const [accessToken, setAccessToken] = useState("");
-  // const [data, setData] = useState(null);
-  // const navigate = useNavigate();
-  // const { instance, accounts } = useMsal();
-
-  // const accessTokenRequest = {
-  //   scopes: ["User.Read","Team.ReadBasic.All","TeamMember.Read.All"], // Add your required scopes here
-  //   account: accounts[0],
-  // };
-
-  // useEffect(() => {
-  //   let token = localStorage.getItem("access_token");
-  //   if (token) {
-  //     navigate("/");
-  //   }
-  //   console.log("Access Token : ", accessToken);
-  // }, [accessToken, navigate]);
-
   return (
     <>
       {/* <Navbar /> */}

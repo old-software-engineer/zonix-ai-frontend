@@ -7,7 +7,7 @@ const Callback = () => {
       const code = urlParams.get("code");
 
       try {
-        const response = await fetch(`http://localhost:8000/auth/callback?code=${code}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/callback?code=${code}`, {
           method: "GET",
         });
                 
