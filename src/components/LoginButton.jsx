@@ -5,7 +5,7 @@ const LoginButton = () => {
     window.location.href = "http://localhost:8000/auth/login";
   };
 
-  return <button className="text-white" onClick={handleLogin}>Log in with Microsoft</button>;
+  return <button className="px-10 py-3 text-white" onClick={handleLogin}>Log in with Microsoft</button>;
 };
 
 export default LoginButton;

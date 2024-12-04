@@ -25,7 +25,7 @@ const LandingPage = () => {
               </div>
               <div className="p-5 border border-gray-400 rounded-lg shadow-xl">
                 <button
-                  className="bg-blue-500 text-white px-10 py-3 my-3 rounded-lg hover:bg-blue-600"
+                  className="bg-blue-500 text-white my-3 rounded-lg hover:bg-blue-600"
                 >
                   <LoginButton />
                 </button>
