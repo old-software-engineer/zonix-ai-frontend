@@ -8,6 +8,8 @@ import CreateTeam from "./components/Teams/CreateTeam";
 import TeamOverview from "./components/Teams/TeamOverview";
 import Callback from "./components/Callbacks";
 import Home from "./screens/Home";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   // State to track token presence
@@ -16,6 +18,14 @@ const App = () => {
   );
 
   return (
+    <div>
+
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        draggable
+      />
       <Router>
         <Routes>
           <Route
@@ -51,6 +61,7 @@ const App = () => {
           <Route path="/auth/callback" element={<Callback />} />
         </Routes>
       </Router>
+    </div>
   );
 };
 

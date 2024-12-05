@@ -1,11 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-// Assets
 import CloseIcon from "../../assets/svg/CloseIcon";
 import LogoIcon from "../../assets/svg/Logo";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
+
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    if (localStorage.getItem("access_token")) {
+      localStorage.removeItem("access_token");
+      navigate("/login");
+      toast.success("Logged out successfully.");
+    }
+  };
   return (
     <Wrapper className="animate bg-primary" sidebarOpen={sidebarOpen}>
       <SidebarHeader className="flexSpaceCenter">
@@ -21,57 +32,53 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       </SidebarHeader>
 
       <UlStyle className="flexNullCenter flexColumn">
-        <li className="semiBold font15 pointer">
           <Link
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
             to="home"
             spy={true}
             smooth={true}
             offset={-60}
+            className="font-semibold cursor-pointer !text-white hover:!text-gray-200 px-3 py-2 m-2"
           >
             Home
           </Link>
-        </li>
-        <li className="semiBold font15 pointer">
+      
           <Link
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
             to="projects"
             spy={true}
             smooth={true}
             offset={-60}
+            className="font-semibold cursor-pointer text-white hover:text-gray-200 px-3 py-2 m-2"
           >
             Projects
           </Link>
-        </li>
-        <li className="semiBold font15 pointer">
           <Link
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
             to="contact"
             spy={true}
             smooth={true}
             offset={-60}
+            className="font-semibold cursor-pointer text-white hover:text-gray-200 px-3 py-2 m-2"
           >
             Contact
           </Link>
-        </li>
+     
       </UlStyle>
-      <div className="flex items-center justify-center border-red-400 border-2">
+      <div className="flex items-center justify-center  border-2">
     
       <UlStyle className="flexSpaceCenter " >
-        <li className="semiBold font15 pointer flexCenter">
-          <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-            Logout
-          </a>
-        </li>
+      <Link
+              to="/"
+              onClick={handleLogout}
+              className="bg-gray-100 rounded-xl font-semibold cursor-pointer px-3 py-2"
+              
+            >
+              Logout
+            </Link>
       </UlStyle>
           
       </div>

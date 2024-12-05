@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const Callback = () => {
   useEffect(() => {
@@ -16,7 +17,10 @@ const Callback = () => {
         }
         const data = await response.json();
         localStorage.setItem("access_token", data.access_token);
-        window.location.href = "/";
+        toast.success("Logged in successfully.")
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       } catch (error) {
         console.error("Error fetching token:", error);
       }

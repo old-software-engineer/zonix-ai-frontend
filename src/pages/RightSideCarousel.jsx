@@ -45,7 +45,7 @@ const RightSideCarousel = () => {
           {imageObjects.map((item, index) => (
             <div
               key={index}
-              className="h-screen w-full flex justify-center bg-blue-50 text-center p-8"
+              className="h-screen w-full flex flex-col justify-center items-center bg-blue-50 text-center p-8"
             >
               <div className="mt-64">
                 <h2 className="text-blue-500 font-bold text-xl lg:text-2xl">
@@ -55,12 +55,14 @@ const RightSideCarousel = () => {
                   {item.text2}
                 </h2>
               </div>
-              <div>
-                <img
-                  src="/images/code.svg"
-                  className="mt-6 ml-60 w-[150px] lg:w-[300px]"
-                  alt="carousel slide"
-                />
+              <div className=" flex justify-center items-center">
+                <div className="">
+                  <img
+                    src="/images/code.svg"
+                    className="mt-6  w-[200px] h[150px] lg:w-[300px]"
+                    alt="carousel slide"
+                  />
+                </div>
               </div>
             </div>
           ))}

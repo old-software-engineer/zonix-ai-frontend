@@ -2,7 +2,7 @@ import React from "react";
 import RightSideCarousel from "./RightSideCarousel";
 import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
-import Footer from '../components/Sections/Footer'
+import Footer from '../components/Footer'
 import Faq from "../components/loginPage/Faq";
 import LoginButton from "../components/LoginButton";
 

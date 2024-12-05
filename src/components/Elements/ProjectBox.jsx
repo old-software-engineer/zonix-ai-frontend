@@ -5,7 +5,7 @@ export default function ProjectBox({ name, created_by,created_at }) {
   return (
     <Wrapper>
       <ImgBtn className="animate pointer">
-        <div className="radius8 bg-gray-100 text-blue-500 pt-14 w-[300px] h-[300px] 
+        <div className="radius8 bg-primary text-white pt-14 w-[300px] h-[300px] 
                         sm:w-[230px] sm:h-[230px] 
                         md:w-[250px] md:h-[250px] 
                         lg:w-[280px] lg:h-[280px]">

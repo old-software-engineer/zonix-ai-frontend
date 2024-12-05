@@ -7,10 +7,13 @@ import Backdrop from "../Elements/Backdrop";
 // Assets
 import LogoIcon from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("scroll", () => setY(window.scrollY));
@@ -22,6 +25,8 @@ export default function TopNavbar() {
   const handleLogout = () => {
     if (localStorage.getItem("access_token")) {
       localStorage.removeItem("access_token");
+      navigate("/login");
+      toast.success("Logged out successfully.");
     }
   };
 
@@ -47,7 +52,6 @@ export default function TopNavbar() {
             <BurgerIcon />
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
-            <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
                 style={{ padding: "10px 15px" }}
@@ -55,46 +59,43 @@ export default function TopNavbar() {
                 spy={true}
                 smooth={true}
                 offset={-80}
+                
+                className="font-semibold cursor-pointer px-3 py-2 m-2"
               >
                 Home
               </Link>
-            </li>
-            <li className="semiBold font15 pointer">
+          
               <Link
                 activeClass="active"
-                style={{ padding: "10px 15px" }}
                 to="projects"
                 spy={true}
                 smooth={true}
                 offset={-80}
+                className="font-semibold cursor-pointer px-3 py-2 m-2"
               >
                 Projects
               </Link>
-            </li>
-            <li className="semiBold font15 pointer">
               <Link
-                activeClass="active"
-                style={{ padding: "10px 15px" }}
+                activeClass="active "
                 to="contact"
                 spy={true}
                 smooth={true}
                 offset={-80}
+                className="font-semibold cursor-pointer px-3 py-2 m-2"
               >
                 Contact
               </Link>
-            </li>
+
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer flexCenter">
-              <a
-                href="/"
-                onClick={handleLogout}
-                className="radius8 lightBg"
-                style={{ padding: "10px 15px" }}
-              >
-                Logout
-              </a>
-            </li>
+            <Link
+              to="/"
+              onClick={handleLogout}
+              className="bg-gray-100 rounded-xl font-semibold cursor-pointer px-3 py-2"
+              
+            >
+              Logout
+            </Link>
           </UlWrapperRight>
         </NavInner>
       </Wrapper>

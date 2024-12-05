@@ -1,7 +1,5 @@
   import React, { useState } from "react";
-  import Navbar from "../NavBar";
-
-  import Footer from "../Sections/Footer";
+  import Footer from "../Footer";
 import TopNavbar from "../Nav/TopNavbar";
 
   function CreateTeam() {
