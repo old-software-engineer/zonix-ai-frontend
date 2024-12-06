@@ -14,8 +14,20 @@ function ManagementCarousel() {
     },
     {
       title: "A few words about company",
+      description1: "A Study of Creativity",
+      description2:
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    },
+    {
+      title: "Did you Know?",
       description1:
-        "A Study of Creativity",
+        "Goals have a 90% higher success rate if you follow up the progress on a weekly base.",
+      description2:
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    },
+    {
+      title: "A few words about company",
+      description1: "A Study of Creativity",
       description2:
         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
     },
@@ -38,7 +50,7 @@ function ManagementCarousel() {
         {objects.map((item, index) => (
           <div key={index}>
             <div className=" h-[400px] flex bg-gray-100">
-              <div className="flex  justify-end items-center my-4 w-1/2 mr-10">
+              <div className="flex justify-end items-center px-20 w-1/2">
                 <img
                   src="/images/carousel.png"
                   alt="img"
@@ -47,7 +59,7 @@ function ManagementCarousel() {
                   height={350}
                 />
               </div>
-              <div className="flex flex-col  w-1/2  my-4 justify-center items-start ml-10">
+              <div className="flex flex-col  w-1/3  my-4 justify-center items-start ml-10">
                 <h2 className="text-blue-500 font-semibold md:text-sm ">
                   {item.title}
                 </h2>
