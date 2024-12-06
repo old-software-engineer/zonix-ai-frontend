@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
-import FullButton from "../Buttons/FullButton";
 import { useNavigate } from "react-router-dom";
 
 export default function Projects() {
@@ -11,29 +10,32 @@ export default function Projects() {
     navigate("/project/new");
   };
 
-  const [teamsData,setTeamsData] = useState([]);
+  // const [teamsData, setTeamsData] = useState([]);
 
-  useEffect(()=>{
-    const fetchTeams = async (accessToken) => {
-      const response = await fetch("https://graph.microsoft.com/v1.0/me/joinedTeams", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setTeamsData(data);
-        return data.value;
-      } else {
-        return null;
-      }
-    };
-    const access_token = localStorage.getItem("access_token");
+  // useEffect(() => {
+  //   const fetchTeams = async (accessToken) => {
+  //     const response = await fetch(
+  //       "https://graph.microsoft.com/v1.0/me/joinedTeams",
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setTeamsData(data);
+  //       return data.value;
+  //     } else {
+  //       return null;
+  //     }
+  //   };
+  //   const access_token = localStorage.getItem("access_token");
 
-    fetchTeams(access_token);
-  },[])
+  //   fetchTeams(access_token);
+  // }, []);
 
   const teams = [
     {
@@ -57,7 +59,7 @@ export default function Projects() {
 
     {
       id: 4,
-      name: "HR team",
+      name: "Sales team",
       created_by: "Created by Kenny Mattheyssen ",
       created_at: " on 30/11/2024",
     },
@@ -69,7 +71,7 @@ export default function Projects() {
     },
     {
       id: 6,
-      name: "HR team",
+      name: "Development team",
       created_by: "Created by Kenny Mattheyssen ",
       created_at: " on 30/11/2024",
     },
@@ -81,8 +83,10 @@ export default function Projects() {
         <div className="mb-40">
           <div className="container">
             <HeaderInfo>
-              <h1 className="font40 extraBold md:ml-10">My project teams</h1>
-              <p className="font13 md:ml-10">
+              <h1 className="font40 extraBold md:ml-3 lg:ml-6">
+                My project teams
+              </h1>
+              <p className="font13 md:ml-3 lg:ml-6">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut
                 <br />
@@ -92,7 +96,7 @@ export default function Projects() {
             <div className="row textCenter">
               {teams.map((team) => (
                 <div
-                  className="col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                  className="col-xs-12 col-sm-3 col-md-3 col-lg-3"
                   key={team.id}
                 >
                   <ProjectBox

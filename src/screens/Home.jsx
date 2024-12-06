@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopNavbar from "../components/Nav/TopNavbar";
 import Projects from "../components/Sections/Projects";
 import Footer from '../components//Footer'
 import ManagementCarousel from "../components/Teams/ManagementCarousel";
-import CreateTeam from "../components/Teams/TeamsSection";
-import Creativity from "../components/Sections/Creativity";
+
+
+
+
+
+
 
 export default function Home() {
   return (

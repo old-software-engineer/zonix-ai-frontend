@@ -1,23 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ProjectBox({ name, created_by,created_at }) {
+export default function ProjectBox({ name, created_by, created_at }) {
   return (
     <Wrapper>
       <ImgBtn className="animate pointer">
-        <div className="radius8 bg-primary text-white pt-14 w-[300px] h-[300px] 
-                        sm:w-[230px] sm:h-[230px] 
-                        md:w-[250px] md:h-[250px] 
-                        lg:w-[280px] lg:h-[280px]">
-          <h3 className=" text-xl font-bold">{name}</h3>
-          <p className=" text-md font-semibold">{created_by}</p>
-          <p className=" text-md font-semibold">{created_at}</p>
+        <div
+          className="radius8 bg-primary text-white  pt-8 md:pt-10 lg:pt-14  w-[200px] h-[180px] 
+                        sm:w-[180px] sm:h-[190px]
+                        lg:w-[220px] lg:h-[220px]"
+        >
+          <h3 className=" text-2xl font-bold text-center text-wrap px-1">{name}</h3>
+          <p className=" text-md font-semibold px-1 text-center">
+            {created_by}
+          </p>
+          <p className=" text-[14px]  font-semibold p-1 text-center">
+            {created_at}
+          </p>
         </div>
       </ImgBtn>
     </Wrapper>
   );
 }
-
 
 const Wrapper = styled.div`
   width: 100%;

@@ -31,6 +31,21 @@ function ManagementCarousel() {
       description2:
         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
     },
+    {
+      title: "Optimizing Web Performance",
+      description1:
+        "Reducing JavaScript execution time by optimizing critical rendering paths.",
+      description2:
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Optimizing your web app's performance by utilizing lazy loading."
+    },
+    {
+      title: "Productivity Boost",
+      description1:
+        "You’re 50% more likely to complete a task if you break it down into smaller, manageable steps.",
+      description2:
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Nulla facilisi."
+    }
+    
   ];
 
   const settings = {
@@ -63,7 +78,7 @@ function ManagementCarousel() {
                 <h2 className="text-blue-500 font-semibold md:text-sm ">
                   {item.title}
                 </h2>
-                <p className="font-semibold  mt-2 sm:text:lg md:text-2xl text-wrap">
+                <p className="font-semibold  mt-2 sm:text:lg md:text-2xl text-wrap pr-2">
                   {item.description1}
                 </p>
                 <p className="text-[12px] mt-2 text-wrap pr-2">

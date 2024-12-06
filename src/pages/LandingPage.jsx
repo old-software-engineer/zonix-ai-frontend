@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RightSideCarousel from "./RightSideCarousel";
 import MeetZonix from "../components/loginPage/MeetZonix";
 import PlanSection from "../components/loginPage/PlanSection";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 import Faq from "../components/loginPage/Faq";
 import LoginButton from "../components/LoginButton";
+import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const access_token = localStorage.getItem("access_token");
+    if (access_token) {
+      toast.warn("Already logged in.");
+      navigate("/");
+    }
+  }, [navigate]);
+
+
   return (
     <>
       {/* <Navbar /> */}
@@ -24,9 +37,7 @@ const LandingPage = () => {
                 </p>
               </div>
               <div className="p-5 border border-gray-400 rounded-lg shadow-xl">
-                <button
-                  className="bg-primary text-white my-3 rounded-lg hover:bg-blue-600"
-                >
+                <button className="bg-primary text-white my-3 rounded-lg hover:bg-blue-600">
                   <LoginButton />
                 </button>
                 <div className="text-[12px] w-96">
